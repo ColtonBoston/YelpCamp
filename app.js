@@ -19,6 +19,10 @@ var commentRoutes = require("./routes/comments"),
 
 //seedDB();
 
+
+// mongoose.connect("mongodb://localhost/yelp_camp_v11", {useMongoClient: true});
+mongoose.connect("mongodb://colt:password@ds161446.mlab.com:61446/yelpcamp_coltonboston");
+
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
 	secret: "Zoe is a dog",
@@ -31,8 +35,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// mongoose.connect("mongodb://localhost/yelp_camp_v11", {useMongoClient: true});
-mongoose.connect("mongodb://colt:password@ds161446.mlab.com:61446/yelpcamp_coltonboston", {useMongoClient: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
