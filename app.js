@@ -21,7 +21,7 @@ var commentRoutes = require("./routes/comments"),
 
 
 // mongoose.connect("mongodb://localhost/yelp_camp_v11", {useMongoClient: true});
-mongoose.connect("mongodb://colt:password@ds161446.mlab.com:61446/yelpcamp_coltonboston");
+mongoose.connect("mongodb://colt:password@ds161446.mlab.com:61446/yelpcamp_coltonboston", {useMongoClient: true});
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
@@ -52,4 +52,5 @@ app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-app.listen(process.env.PORT, process.env.IP, console.log("listening..."));
+app.listen("3000", console.log("listening..."));
+// app.listen(process.env.PORT, process.env.IP, console.log("listening..."));

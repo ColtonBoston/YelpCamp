@@ -26,7 +26,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
 	} else {
     req.flash("error", "You must be logged in to do that.");
     console.log("Error at checkCampgroundOwnership middleware (else). Redirecting back...");
-		res.redirect("back");
+		res.redirect("/campgrounds");
 	}
 }
 
