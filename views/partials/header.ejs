@@ -5,29 +5,26 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-  <nav class="navbar navbar-default">
-  	<div class="container-fluid">
+  <nav class="navbar navbar-default navbar-expand">
   		<div class="navbar-header">
   			<a href="/" class="navbar-brand">YelpCamp</a>
   		</div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
       </button>
-  		<div class="collapse navbar-collapse" id="navbarToggle">
-  			<ul class="nav navbar-nav navbar-right">
+  		<div class="" id="navbarToggle">
+  			<ul class="nav navbar-nav navbar-right mr-auto mt-2 mt-lg-0">
           <% if(!currentUser){ %>
-  				      <li><a href="/login">Login</a></li>
-  				      <li><a href="/register">Sign Up</a></li>
+  				      <li class="nav-item"><a href="/login">Login</a></li>
+  				      <li class="nav-item"><a href="/register">Sign Up</a></li>
           <% } else { %>
-                <li><a href="#">Signed In As <strong><%= currentUser.username %></strong></a></li>
-  				      <li><a href="/logout">Logout</a></li>
+                <li class="nav-item"><a href="#">Signed In As <strong><%= currentUser.username %></strong></a></li>
+  				      <li class="nav-item"><a href="/logout">Logout</a></li>
           <% } %>
   			</ul>
   		</div>
-  	</div>
   </nav>
   <div class="container">
     <% if (error && error.length > 0) { %>
