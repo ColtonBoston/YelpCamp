@@ -5,16 +5,46 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+  <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+         aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> IMGS</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
   <nav class="navbar navbar-default navbar-expand">
   		<div class="navbar-header">
   			<a href="/" class="navbar-brand">YelpCamp</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarToggle"
+         aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
   		</div>
-      </button>
-  		<div class="" id="navbarToggle">
+  		<div class="collapse navbar-collapse" id="navbarToggle">
   			<ul class="nav navbar-nav navbar-right mr-auto mt-2 mt-lg-0">
           <% if(!currentUser){ %>
   				      <li class="nav-item"><a href="/login">Login</a></li>
