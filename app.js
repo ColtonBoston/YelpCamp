@@ -19,9 +19,7 @@ var commentRoutes = require("./routes/comments"),
 
 //seedDB();
 
-
-// mongoose.connect("mongodb://localhost/yelp_camp_v11", {useMongoClient: true});
-mongoose.connect("mongodb://colt:password@ds161446.mlab.com:61446/yelpcamp_coltonboston", {useMongoClient: true});
+mongoose.connect(process.env.DATABASEURL);
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
