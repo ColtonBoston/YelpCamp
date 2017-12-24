@@ -21,6 +21,8 @@ var commentRoutes = require("./routes/comments"),
 
 mongoose.connect(process.env.DATABASEURL);
 
+app.locals.moment = require("moment");
+
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
 	secret: "Zoe is a dog",
