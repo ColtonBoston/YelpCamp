@@ -8,7 +8,8 @@ var express = require("express")
 		seedDB = require("./seeds"),
 		passport = require("passport"),
 		LocalStrategy = require("passport-local"),
-		methodOverride = require("method-override");
+		methodOverride = require("method-override"),
+		geocoder = require("geocoder");
 
 var app = express();
 

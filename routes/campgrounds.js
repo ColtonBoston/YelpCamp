@@ -21,26 +21,33 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 	var price = req.body.price;
 	var image = req.body.image;
 	var description = req.body.description;
-	var author = { id: req.user._id, username: req.user.username };
+	geocoder.geocode(req.body.location, function (err, data) {
+    var lat = data.results[0].geometry.location.lat;
+    var lng = data.results[0].geometry.location.lng;
+    var location = data.results[0].formatted_address;
+		var author = { id: req.user._id, username: req.user.username };
+		var newCampground =
+		{
+			name: name,
+			price: price,
+			image: image,
+			description: description,
+			author: author,
+			location: location,
+			lat: lat,
+			lng: lng
+		};
 
-	var newCampground =
-	{
-		name: name,
-		price: price,
-		image: image,
-		description: description,
-		author: author
-	};
-	Campground.create(newCampground, function(err, createdCampground){
-		if (err){
-			console.log(err);
-		} else {
-			console.log("New campground saved.");
-			console.log(createdCampground);
-			req.flash("success", "Campground created!");
-			res.redirect("/campgrounds");
-		}
-	});
+    // Create a new campground and save to DB
+		Campground.create(newCampground, function(err, createdCampground){
+			if (err){
+				console.log(err);
+			} else {
+				req.flash("success", "Campground created!");
+				res.redirect("/campgrounds");
+			}
+		});
+  });
 });
 
 // NEW -- Show form to create new campground
@@ -74,14 +81,21 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 // UPDATE
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
 	// find and update the correct campground
-	Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
-		if (err){
-			res.redirect("/campgrounds");
-		} else {
-			res.redirect("/campgrounds/" + updatedCampground._id);
-		}
-	});
-	// redirect to show page
+	geocoder.geocode(req.body.campground.location, function (err, data) {
+    var lat = data.results[0].geometry.location.lat;
+    var lng = data.results[0].geometry.location.lng;
+    var location = data.results[0].formatted_address;
+    var newData = {name: req.body.campground.name, image: req.body.campground.image, description: req.body.campground.description, price: req.body.campground.price, location: location, lat: lat, lng: lng};
+    Campground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, campground){
+        if(err){
+            req.flash("error", err.message);
+            res.redirect("/campgrounds/");
+        } else {
+            req.flash("success", "Successfully Updated!");
+            res.redirect("/campgrounds/" + campground._id);
+        }
+    });
+  });
 });
 
 // DESTROY
