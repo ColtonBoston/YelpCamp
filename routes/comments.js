@@ -25,7 +25,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 			console.log(err);
 			res.redirect("/campgrounds");
 		} else {
-			console.log(req.body.comment);
 			Comment.create(req.body.comment, function(err, comment){
 				if (err){
           req.flash("error", "Something went wrong.");
@@ -36,7 +35,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
           comment.author.username = req.user.username;
           // save comment
           comment.save();
-          console.log(comment);
 					foundCampground.comments.push(comment);
 					foundCampground.save();
           req.flash("success", "Successfully created comment!");

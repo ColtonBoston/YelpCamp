@@ -10,6 +10,8 @@
 </head>
 <body>
   <nav class="navbar navbar-default navbar-expand">
+
+    <div class="container">
   		<div class="navbar-header">
   			<a href="/" class="navbar-brand">YelpCamp</a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarToggle"
@@ -35,7 +37,10 @@
           <% } %>
   			</ul>
   		</div>
+
+    </div>
   </nav>
+
   <div class="container">
     <% if (error && error.length > 0) { %>
       <div class="alert alert-danger" role="alert">
