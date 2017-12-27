@@ -9,30 +9,6 @@
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-         aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-picture"></span> IMGS</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
   <nav class="navbar navbar-default navbar-expand">
   		<div class="navbar-header">
   			<a href="/" class="navbar-brand">YelpCamp</a>
@@ -45,10 +21,14 @@
         </button>
   		</div>
   		<div class="collapse navbar-collapse" id="navbarToggle">
-  			<ul class="nav navbar-nav navbar-right mr-auto mt-2 mt-lg-0">
+
+        <ul class="nav navbar-nav">
+          <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right mr-auto mt-2 mt-lg-0">
           <% if(!currentUser){ %>
-  				      <li class="nav-item"><a href="/login">Login</a></li>
-  				      <li class="nav-item"><a href="/register">Sign Up</a></li>
+  				      <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login</a></li>
+  				      <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up</a></li>
           <% } else { %>
                 <li class="nav-item"><a href="#">Signed In As <strong><%= currentUser.username %></strong></a></li>
   				      <li class="nav-item"><a href="/logout">Logout</a></li>
