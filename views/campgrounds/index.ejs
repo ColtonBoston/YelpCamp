@@ -8,10 +8,11 @@
 			<p>
 				<a href="/campgrounds/new" class="btn btn-primary btn-lg">Add new campground</a>
 			</p>
+			<input class="form-control" type="text" placeholder="Search campgrounds..." id="campground-search">
 		</div>
 	</header>
 
-	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+	<div id="campground-grid" class="row text-center" style="display: flex; flex-wrap: wrap;">
 		<% campgrounds.forEach(function(campground){ %>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="thumbnail">
@@ -27,4 +28,6 @@
 		<% }); %>
 	</div>
 </div>
+<script type="text/javascript">var campgrounds = <%- JSON.stringify(campgrounds) %>;</script>
+<script type="text/javascript" async defer src="/scripts/search.js"></script>
 <% include ../partials/footer %>
